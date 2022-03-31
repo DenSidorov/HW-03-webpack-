@@ -1,0 +1,4 @@
+npm init
+npm install webpack webpack-cli --save-dev
+Пакет webpack-cli необходим нам для работы с вебпаком в командной строке.
+npx webpack

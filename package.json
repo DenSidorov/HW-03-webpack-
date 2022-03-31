@@ -1,0 +1,15 @@
+{
+  "name": "hw_03_webpack",
+  "version": "1.0.0",
+  "description": "HW-03. Module_13.7 Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DenSid",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
