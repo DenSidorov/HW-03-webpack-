@@ -2,3 +2,48 @@ npm init
 npm install webpack webpack-cli --save-dev
 Пакет webpack-cli необходим нам для работы с вебпаком в командной строке.
 npx webpack
+npx webpack --watch
+Также, можно создать скрипт в пакете package.json. Давайте добавим в объект scripts следующую строку:
+"build" : "webpack"
+Теперь мы можем запускать вебпак с помощью скрипта npm run build.
+создать конфигурационный файл для вебпака. Для этого в корне проекта создадим файл с названием webpack.config.js
+
+Подключаем CSS к Webpack
+npm i style-loader css-loader --save-dev.
+В module.exports появляется еще одно свойство — module. Это объект со свойством rules, которое описывает правила для обработки файлов, типы которых по умолчанию не обрабатываются вебпаком.
+
+  module: {
+    rules: [
+      {
+        use: ['style-loader', 'css-loader'],  // index.js => import './style.css';
+        test: /\.css$/,
+      },
+    ],
+  },
+
+in index.js => import './style.css';
+
+/// OR:
+npm install  mini-css-extract-plugin  --save-dev
+
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+...
+  plugins: [ new MiniCssExtractPlugin() ],
+  module: {
+    rules: [
+      {
+          use: [
+              {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: {
+                      esModule: true, // позволяет MiniCssExtractPlugin.loader работать в ES6 модулями
+                    },
+                },
+                "css-loader",
+            ], // index.html => <link rel="stylesheet" type="text/css" href="dist/main.css">
+            test: /\.css$/,
+      },
+    ],
+  },
+
+in index.html => <link rel="stylesheet" type="text/css" href="dist/main.css">
