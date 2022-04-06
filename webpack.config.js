@@ -1,26 +1,42 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  mode: 'development',
   entry: "./src/index.js",
   output: {
     filename: "main.js",
   },
-  plugins: [ new MiniCssExtractPlugin() ],
+  // devServer: {
+  //   contentBase: '../dist',
+  //   port: 3001
+  // },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    // new HtmlWebpackPlugin({
+    //   template: "./src/index.pug",
+    //   filename: "index.html",
+    // }),
+  ],
   module: {
     rules: [
       {
-          use: [
-              {
-                  loader: MiniCssExtractPlugin.loader,
-                  options: {
-                      esModule: true, // позволяет MiniCssExtractPlugin.loader работать в ES6 модулями
-                    },
-                },
-                "css-loader",
-            ], // index.html => <link rel="stylesheet" type="text/css" href="dist/main.css">
-            // use: ['style-loader', 'css-loader'],  // index.js => import './style.css';
-            test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true, // позволяет MiniCssExtractPlugin.loader работать в ES6 модулями
+            },
+          },
+          "css-loader",
+        ], // index.html => <link rel="stylesheet" type="text/css" href="dist/main.css">
+        // use: ['style-loader', 'css-loader'],  // index.js => import './style.css';
+        test: /\.css$/,
       },
+      // {
+      //   test: /\.pug$/,
+      //   loader: "pug-loader",
+      // },
     ],
   },
 };

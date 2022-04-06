@@ -7,7 +7,7 @@ npx webpack --watch
 "build" : "webpack"
 Теперь мы можем запускать вебпак с помощью скрипта npm run build.
 создать конфигурационный файл для вебпака. Для этого в корне проекта создадим файл с названием webpack.config.js
-
+**************************************************
 Подключаем CSS к Webpack
 npm i style-loader css-loader --save-dev.
 В module.exports появляется еще одно свойство — module. Это объект со свойством rules, которое описывает правила для обработки файлов, типы которых по умолчанию не обрабатываются вебпаком.
@@ -47,3 +47,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
   },
 
 in index.html => <link rel="stylesheet" type="text/css" href="dist/main.css">
+*******************************************************************************
+Pug — это высокопроизводительный шаблонизатор, реализованный с помощью JavaScript для Node.js и браузеров.
+
+npm install  html-webpack-plugin  --save-dev
+В webpack.config.js =
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+plugins: [new HtmlWebpackPlugin()]
+npx webpack //Создаст dist/index.html
+
+npm install pug pug-loader --save-dev
